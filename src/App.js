@@ -1,22 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+//import logo from "./logo.svg";
+// importamos la imagen  y le asignamos un nombre
+import imageGOT from "./img/GOT.webp";
+import { useState } from "react";
+import "./App.css";
+import Characters from "./components/character";
 
 function App() {
+  const [characters, setCharacters] = useState(null);
+
+  const reqApi = async () => {
+    //const api = await fetch("https://thronesapi.com/api/v2/Characters/");
+    const api = await fetch("https://api.got.show/api/general/characters");
+    const CharacterApi = await api.json();
+    //setCharacters(CharacterApi.results);
+    setCharacters(CharacterApi.show);
+  };
+  //console.log(characters);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1 className="title">Game Of Thrones</h1>
+        {characters ? (
+          <Characters
+            characters={characters}
+            setCharacters={setCharacters}
+          ></Characters>
+        ) : (
+          <>
+            <img src={imageGOT} alt="Game Of Thones" className="img-home"></img>
+            <button onClick={reqApi} className="btn-search">
+              Buscar Personaje
+            </button>
+          </>
+        )}
       </header>
     </div>
   );
