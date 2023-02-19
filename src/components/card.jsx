@@ -1,17 +1,30 @@
 export default function Card(props) {
   const { charact, endview } = props;
-  console.log(charact);
+  //console.log(charact);
 
   return (
     <div className="characters">
       <h1>Character: {charact.name}</h1>
       <div className="container-characters">
         <div className="character-container h-100" key={1}>
-            <img className="img w-50" src={charact.image} alt={charact.image} />
+          <img className="img w-50" src={charact.image} alt={charact.image} />
           <div className="m-2 h-100">
             <h3>{charact.name}</h3>
             <span>{charact.titles[0]}</span>
             <p>{charact.house}</p>
+            <h6>
+              {charact.alive ? (
+                <>
+                  <span className="alive" />
+                  Alive
+                </>
+              ) : (
+                <>
+                  <span className="dead" />
+                  Dead
+                </>
+              )}
+            </h6>
             <hr />
             <h5>Actor: {charact.actor}</h5>
             <p>Gender: {charact.gender}</p>

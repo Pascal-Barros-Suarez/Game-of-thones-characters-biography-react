@@ -79,19 +79,19 @@ body {
 
 .character-container .dead,
 .alive {
-  height: 0.5rem;
-  width: 0.5rem;
+  height: 1.3rem;
+  width: 1.3rem;
   margin-right: 0.375rem;
   border-radius: 50%;
   display: inline-block;
 }
 
 .character-container .dead {
-  background: rgb(214, 61, 46);
+  background: rgb(224, 28, 10);
 }
 
 .character-container .alive {
-  background: rgb(85, 204, 68);
+  background: rgb(48, 211, 27);
 }
 
 .character-container div:first-child {
